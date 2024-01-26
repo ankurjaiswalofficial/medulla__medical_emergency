@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<h2>Login Page</h2>
+<form action="{% url 'login' %}" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">Submit Form</button>
+    <button type="reset">Reset Form</button>
+</form>
+</body>
+</html>
