@@ -43,16 +43,6 @@ class User(AbstractBaseUser):
     def __str__(self):
         return self.name
 
-    def has_perm(self, perm, obj=None):
-        "Does the user have a specific permission?"
-        # Simplest possible answer: Yes, always
-        return True
-
-    def has_module_perms(self, app_label):
-        "Does the user have permissions to view the app `app_label`?"
-        # Simplest possible answer: Yes, always
-        return True
-
 
 # def DriverImageStorage(instance, filename):
 #     base_url = "/drivers/images/"
@@ -65,7 +55,7 @@ class DriverImageStorage(FileSystemStorage):
     def get_path(self, instance, filename):
         return f'drivers/{instance.id}/{filename}'
 
-class AmbulanceType(models.Model):
+class AmbulanceVehicleType(models.Model):
     TYPE_CHOICES = (
         ('VAN', 'Ambulance Van'),
         ('SPRINTER', 'Ambulance Sprinter'),
@@ -73,8 +63,32 @@ class AmbulanceType(models.Model):
         ('MOTORCYCLE', 'Ambulance Motorcycle'),
         ('OTHER', 'Other'),
     )
+    CONDITION_CHOICES = (
+        ('GOOD', "Good Condition"),
+        ('BAD', "Bad Condition"),
+        ('SERVICING', "Went For Servicing"),
+        ('MAINTENANCE', "Maintenance Required"),
+    )
     name = models.CharField(
         max_length=255, choices=TYPE_CHOICES, default='VAN')
+    description = models.TextField(blank=True)
+    vehicle_condition = models.CharField(
+        max_length=255, choices=CONDITION_CHOICES, default='GOOD')
+
+    def __str__(self):
+        return self.name
+
+
+class AmbulanceServiceType(models.Model):
+    TYPE_CHOICES = (
+        ('BASIC', 'Basic Life Support (BLS)'),
+        ('ADVANCED', 'Advanced Life Support (ALS)'),
+        ('MOBILITY', 'Patient Transfer Service (PTS)'),
+        ('AIR', 'Air Ambulance Service (AAS)'),
+        ('MORTUARY', 'Mortuary Ambulance Service (MAS)'),
+    )
+    name = models.CharField(
+        max_length=255, choices=TYPE_CHOICES, default='BASIC')
     description = models.TextField(blank=True)
 
     def __str__(self):
@@ -95,7 +109,8 @@ class AmbulanceDriver(models.Model):
     name = models.CharField(max_length=255)
     mobile_number = models.CharField(max_length=15)
     ambulance_number = models.CharField(max_length=15, unique=True)
-    ambulance_type = models.ForeignKey(AmbulanceType, on_delete=models.CASCADE)
+    ambulance_vehicle_type = models.ForeignKey(AmbulanceVehicleType, on_delete=models.CASCADE)
+    ambulance_service_type = models.ForeignKey(AmbulanceServiceType, on_delete=models.CASCADE)
     license_number = models.CharField(max_length=255, blank=True)
     driving_experience = models.IntegerField(null=True, blank=True)
     is_available = models.BooleanField(default=True)
