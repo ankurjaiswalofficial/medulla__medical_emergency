@@ -1,20 +1,670 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Home</title>
-</head>
-<body>
-<h2>Home Page</h2>
+{% extends "base.html" %}
+{% load static %}
+{% block icon %}
+<link rel="shortcut icon" href="C:\Users\lenovo\Desktop\sih certificate_files\dev .jpg">
+ {% endblock icon %}
+{% block font %}
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link  href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+{% endblock font %}
+{% block css %}
+<link rel="stylesheet" href="{% static "css/base.css" %}">
+<link rel="stylesheet" href="{% static "css/home.css" %}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+{% endblock css %}
+{% block body %}
+{% comment %} <h2>Home Page</h2>
 <nav>
     <ul>
         {% if user.is_authenticated %}
-        <li><a href="{% url 'logout' %}"></a></li>
+        <li><a href="{% url 'logout' %}">Logout</a></li>
         {% else %}
         <li><a href="{% url 'register' %}">Register</a></li>
         <li><a href="{% url 'login' %}">Login</a></li>
         {% endif %}
     </ul>
-</nav>
-</body>
-</html>
+</nav> {% endcomment %}
+<!--==Hero-Section========================-->
+<section id="hero">
+    
+    <!--==navigation====================-->
+    <nav class="navigation">
+        <!--**menu-btn*****-->
+        <input type="checkbox" class="menu-btn" id="menu-btn">
+        <label for="menu-btn" class="menu-icon">
+            <span class="nav-icon"></span>
+        </label>
+        <!--**logo*********-->
+        <img class="small-image" src="{% static "img/logo.png" %}" alt="your image">
+        <a href="/" class="logo"><span>Medulla</span></a>
+        <!--**menu*********-->
+        <ul class="menu">
+            
+            <li><a href="#about Us">About Us</a></li>
+            <li><a href="#our-services">Our Services</a></li>
+            
+            <li><a href="#our-team">Find A Guider</a></li>
+            <li><a href="#testimonials">Testimonial's</a></li>
+        </ul>
+        <!--**contact*******-->
+        <a href="{% url "login" %}" class="nav-appointment-btn">Book now</a>
+    </nav><!--nav-end-->
+
+
+    <!--==Content============================-->
+    <div class="hero-content">
+        <!--**text****************-->
+        <div class="hero-text">
+            <h1>One Stop Solution for all of your Emergency Needs</h1>
+            <p>Choose the ambulance that best fits your needs and book with help of one call or websites.
+
+                With a hassle-free booking process.
+            </p>
+            <!--btns-->
+            <div class="hero-text-btns">
+                
+                <a href="#"><i class="fa-solid fa-phone"></i> Call Emergency 18006-906-206</a>
+                <a href="availablehospital.php"><i class="fa-solid fa-magnifying-glass"></i> Hospital Availability</a>
+            </div>
+        </div>
+        <!--**img*****************-->
+        <div class="hero-img">
+            <img alt="hel" src="{% static "img/ambulance.jpg" %}">
+        </div>
+    </div>
+
+    
+</section><!--hero-end-->
+
+
+<!--==appointment-search===============================-->
+<div class="appointment-search-container">
+    <h3>Find Emergency Ambulance</h3>
+    <form class="appointment-search" method="post" action="show_ambulance.php">
+    <!--**doctor-search-box*******-->
+    <div class="appo-search-box">
+        <i class="fa-solid fa-location-crosshairs"></i>
+        <input type="text" name="pickup_address" placeholder="Enter pickup address">
+    </div>
+    <!--**set-your-location*******-->
+    <div class="appo-search-box">
+     <i class="fa-solid fa-location-dot"></i>
+     <input type="text" name="drop_address" placeholder="Enter Drop Location">
+        
+    </div>
+    <!--**btn*********************-->
+    <button>
+       <input type="button" value="Search" class="fa-solid fa-magnifying-glass"/>
+       
+       
+    </button>
+    </form>
+</div>
+<!-- chatbot -->
+
+
+
+
+
+<!--==service-info===========================-->
+<section class="what-we-provide">
+
+    <!--**box1***********-->
+    <div class="w-info-box w-i-box1">
+        <!--icon-->
+        <div class="w-info-icon">
+            <i class="fa-solid fa-truck-fast"></i>
+        </div>
+        <!--text-->
+        <div class="w-info-text">
+            <strong>Fast response time </strong>
+            <p>Our staff is trained to provide quick and efficient emergency medical services, ensuring that you receive the care you need in a timely manner. </p>
+        </div>
+    </div>
+    <!--**box2***********-->
+    <div class="w-info-box w-i-box2">
+        <!--icon-->
+        <div class="w-info-icon">
+            <i class="fa-regular fa-comments"></i>
+        </div>
+        <!--text-->
+        <div class="w-info-text">
+            <strong>24/7 Availability</strong>
+            <p>Medical emergencies can happen anytime, anywhere. That's why our ambulance services are available 24/7 to respond promptly to your call.</p>
+        </div>
+    </div>
+    <!--**box3***********-->
+    <div class="w-info-box w-i-box3">
+        <!--icon-->
+        <div class="w-info-icon">
+            <i class="fa-solid fa-map-location-dot"></i>
+        </div>
+        <!--text-->
+        <div class="w-info-text">
+            <strong>GPS-Enable Tracking</strong>
+            <p>Medical emergencies can happen anytime, anywhere. That's why our ambulance services are available 24/7 to respond promptly to your call. </p>
+        </div>
+    </div>
+
+</section><!--end-->
+
+
+
+<!--==Story=============================-->
+<section id="our_story">
+
+    <!--**img**-->
+    <div class="our-story-img">
+        <img src="{% static "img/left.png" %}" alt="helooo" />
+        <a href="#" class="story-play-btn">
+            <i class="fa-solid fa-play"></i>
+            Play Video
+        </a>
+    </div>
+    <!--**text**-->
+    <div class="our-stroy-text">
+        <h2>Short Story About Our Misson.</h2>
+        <p>At Medulla, our mission is to save lives and provide exceptional emergency medical services to the people of India. With our fleet of state-of-the-art ambulances and highly skilled medicalprofessionals, we're dedicated to being the driving force behind every critical moment, ensuring that help reaches you faster than a heartbeat.</p>
+        <p> Our Mission is India's fastest-growing ambulance service provider. At Medulla, we are dedicated to providing comprehensive solutions to all your ambulance needs. With our 24/7 availability and a wide range of ambulances, including Basic life support, Advanced life support, Patient transport ambulance, ICU ambulance, Dead Body ambulance we ensure that every medical transportation requirement is met.<a>Read More</a></p>
+        <!--numbers-of-happy-patients-->
+        <div class="story-numbers-container">
+            <!--box-->
+            <div class="story-numbers-box s-n-box1">
+                <strong>500+</strong>
+                <span>Cities</span>
+            </div>
+            <!--box-->
+            <div class="story-numbers-box s-n-box2">
+                <strong>1500+</strong>
+                <span>Hospitals</span>
+            </div>
+            <!--box-->
+            <div class="story-numbers-box s-n-box3">
+                <strong>6000+</strong>
+                <span>Drivers</span>
+            </div>
+            <!--box-->
+            <div class="story-numbers-box s-n-box4">
+                <strong>10k+</strong>
+                <span>Saved Life</span>
+            </div>
+        </div>
+    </div>
+    
+</section><!--story-end-->
+
+
+
+<!--==Our-Services======================-->
+<section id="our-services">
+
+    <!--**heading********************-->
+    <div class="services-heading">
+        <!--text-->
+        <div class="services-heading-text">
+            <strong>Our Services</strong>
+            <h2>High Quality Services For You</h2>
+        </div>
+        <!--btns-->
+        <div class="service-slide-btns">
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </div>
+
+    <!--**container*******************-->
+    <div class="services-box-container">
+
+         <!-- Swiper -->
+        <div class="swiper mySwiperservices">
+            <div class="swiper-wrapper">
+                <!--**1*******-->
+                <div class="swiper-slide">
+                <!--**box1**-->
+                <div class="service-box s-box1">
+                    <!--icon-->
+                    <i class="fa-solid fa-truck-medical"></i>
+                    <!--title-->
+                    <strong>Emergency Ambulance Service<strong>
+                    <!--details-->
+                    <p>Our Mission is India's fastest-growing ambulance service provider. At Medulla, we are dedicated to providing comprehensive solutions to all your ambulance needs. With our 24/7 availability and a wide range of ambulances, including Basic life support, Advanced life support, Patient transport ambulance, ICU ambulance, Dead Body ambulance we ensure that every medical transportation requirement is met.Advance  Life Support(ALS)
+                        Medical First Responder (MFR) ambulances are the first responders to any medical emergency. They are equipped with basic medical equipments and trained medical personnel to stabilize patients until more advanced care arrives.</p>
+                    <!--read more-->
+                    <a href="#">Click here</a>
+                </div>
+                </div><!--slide-end-->
+                <!--**1*******-->
+                <div class="swiper-slide">
+                <!--**box1**-->
+                <div class="service-box s-box2">
+                    <!--icon-->
+                    <i class="fa-solid fa-bed"></i>
+                    <!--title-->
+                    <strong>Hospital Beds Availability</strong>
+                    <!--details-->
+                    <p>We provide ICU beds without ventilator and ICU beds with ventilator and private room with AC and without AC. ISU bed with and without ventilator.Our aim is to revolutionize the industry and become India's go-to emergency response system, available at your fingertips.With our state-of-the-art dispatch softeware, hospitals can schedule pickups and drops with ease, ensuring prompt service every time. Time is of the assence in medical emergencies, which is why we prioritize speed and efficiency, offering the quickest possible response times to provide unparalleled support. Join us in our mission to make medical emergencies a top priority and experience our exceptional ambulance services today.</p>
+                    <!--read more-->
+                    <a href="#">Click here</a>
+                </div>
+                </div><!--slide-end-->
+                <!--**1*******-->
+                <!-- <div class="swiper-slide"> -->
+                <!--**box1**-->
+                <!-- <div class="service-box s-box3"> -->
+                    <!--icon-->
+                    <!-- <i class="fa-brands fa-rocketchat"></i> -->
+                    <!--title-->
+                    <!-- <strong>Guidence Chatbot </strong> -->
+                    <!--details-->
+                    <!-- <p>We proide medical Guidence and assesment report with help of questioning and proide calling guidence with our experience doctor at lowest cost</p> -->
+                    <!--read more-->
+                    <!-- <a href="#">Read More</a> -->
+                <!-- </div>
+                </div>   -->
+                <!-- slide-end -->
+                <!--**1*******-->
+                <!-- <div class="swiper-slide"> -->
+                <!--**box1**-->
+                <!-- <div class="service-box s-box4"> -->
+                    <!--icon-->
+                    <!-- <i class="fa-solid fa-user-doctor"></i> -->
+                    <!--title-->
+                    <!-- <strong>Medu ERS</strong> -->
+                    <!--details-->
+                   <!-- <p> we proide meduers system to user</p> -->
+                    <!--read more-->
+                    <!-- <a href="#">Read More</a> -->
+            </div>   <!--slide-end-->
+            </div><!--wrapper-end-->
+        </div><!--swiper-end-->
+
+    </div>
+
+    <!--btn-->
+    <span class="service-btn">Contact Us For Need Any Help And Services <a href="#">Let's get Started</a></span>
+
+</section><!--services-end-->
+
+
+<!--==Why-choose-us=======================-->
+<section id="why-choose-us">
+
+    <!--**left*****************-->
+    <div class="why-choose-us-left">
+        <h3>Why Choose Us?</h3>
+        <!--==container====-->
+        <div class="why-choose-box-container">
+            <!--**box**-->
+            <div class="why-choose-box">
+                <!--icon-->
+                <i class="fa-solid fa-bed"></i>
+                <!--text-->
+                <div class="why-choose-box-text">
+                    <strong>Patient first policy</strong>
+                    <p>patient is our first priority </p>
+                </div>
+            </div>
+            <!--**box**-->
+            <div class="why-choose-box">
+                <!--icon-->
+                <i class="fa-solid fa-clock"></i>
+                <!--text-->
+                <div class="why-choose-box-text">
+                    <strong>Emergency assistance time of 15 minutes or less</strong>
+                    <p>we proide emergency service less then 15 minute and immediate respose to you</p>
+                </div>
+            </div>
+            <!--**box**-->
+            <div class="why-choose-box">
+                <!--icon-->
+                <i class="fa-brands fa-rocketchat"></i>
+                <!--text-->
+                <div class="why-choose-box-text">
+                    <strong>24/7 Support</strong>
+                    <p>Medical emergencies can happen anytime, anywhere. That's why our ambulance services are available 24/7 to respond promptly to your call.</p>
+                </div>
+            </div>
+            <!--**box**-->
+            <div class="why-choose-box">
+                <!--icon-->
+                <i class="fa-solid fa-truck-medical"></i>
+                <!--text-->
+                <div class="why-choose-box-text">
+                    <strong>Biggest fleet of ambulances across India</strong>
+                    <p>we proide larger link of ambulance service.</p>
+                </div>
+            </div>
+        </div>
+        <!--==btn========-->
+        <a href="#" class="why-choose-us-btn">Make Appointment</a>
+    </div><!--left-end-->
+
+    <!--**right*******************-->
+    <div class="why-choose-us-right">
+        <h3>Emergency?<br/>
+            Contact Us
+        </h3>
+        <p>Help / Rescues the Patient in case of the Emergency situation by doing just a click. Medulla Ambulance comes right in front of the door for help.</p>
+        <!--==container====-->
+        <div class="w-right-contact-container">
+            <!--**box**-->
+            <div class="w-right-contact-box">
+                <i class="fa-solid fa-phone"></i>
+                <!--text-->
+                <div class="w-right-contact-box-text">
+                    <span>Call Us Now</span>
+                    <strong>+123 4567 89</strong>
+                </div>
+            </div>
+            <!--**box**-->
+            <div class="w-right-contact-box">
+                <i class="fa-solid fa-envelope"></i>
+                <!--text-->
+                <div class="w-right-contact-box-text">
+                    <span>Mail Us</span>
+                    <strong>info@example.com</strong>
+                </div>
+            </div>
+        </div>
+    </div><!--right-end-->
+
+</section><!--end-->
+
+
+
+
+<!--==Team===========================-->
+<section id="our-team">
+
+    <!--**heading*****************-->
+    <div class="our-team-heading">
+        <h3>Meet Our Specialist</h3>
+        <p>we proide experiencemedical staff</p>
+    </div>
+
+    <!--**team-container***********-->
+    <div class="team-box-container">
+        <!-- Swiper -->
+        <div class="swiper mySwiperteam">
+        <div class="swiper-wrapper">
+            <!--**1***-->
+            <div class="swiper-slide">
+                <!--**box**-->
+                <div class="team-box">
+                    <!--img-->
+                    <div class="team-img">
+                        <img alt="waiting" src="{% static "img/d1.jpeg" %}">
+                    </div>
+                    <!--text-->
+                    <div class="team-text">
+                        <strong>Dr. Paradox Alex</strong>
+                        <span>Skin Specialist</span>
+                    </div>
+                </div>
+            </div><!--end-slide-->
+            <!--**1***-->
+            <div class="swiper-slide">
+                <!--**box**-->
+                <div class="team-box">
+                    <!--img-->
+                    <div class="team-img">
+                        <img alt="waiting" src="{% static "img/d2.jpeg" %}">
+                    </div>
+                    <!--text-->
+                    <div class="team-text">
+                        <strong>Dr. Paradox Alex</strong>
+                        <span>Skin Specialist</span>
+                    </div>
+                </div>
+            </div><!--end-slide-->
+            <!--**1***-->
+            <div class="swiper-slide">
+                <!--**box**-->
+                <div class="team-box">
+                    <!--img-->
+                    <div class="team-img">
+                        <img alt="waiting" src="{% static "img/d3.jpeg" %}">
+                    </div>
+                    <!--text-->
+                    <div class="team-text">
+                        <strong>Dr. Paradox Alex</strong>
+                        <span>neuro Specialist</span>
+                    </div>
+                </div>
+            </div><!--end-slide-->
+            <!--**1***-->
+            <div class="swiper-slide">
+                <!--**box**-->
+                <div class="team-box">
+                    <!--img-->
+                    <div class="team-img">
+                        <img alt="" src="{% static "img/d4.jpeg" %}">
+                    </div>
+                    <!--text-->
+                    <div class="team-text">
+                        <strong>Dr. Paradox Alex</strong>
+                        <span>Skin Specialist</span>
+                    </div>
+                </div>
+            </div><!--end-slide-->
+            <!--**1***-->
+            <div class="swiper-slide">
+                <!--**box**-->
+                <div class="team-box">
+                    <!--img-->
+                    <div class="team-img">
+                        <img alt="" src="{% static "img/d5.jpeg" %}">
+                    </div>
+                    <!--text-->
+                    <div class="team-text">
+                        <strong>Dr. Paradox Alex</strong>
+                        <span>Skin Specialist</span>
+                    </div>
+                </div>
+            </div><!--end-slide-->
+        </div><!--wrapper-end-->
+        <div class="swiper-pagination"></div>
+        </div><!--swiper-end-->
+
+        
+    
+    </div>
+
+</section><!--team-end-->
+
+
+
+<!--==Testimonials============================-->
+<section id="testimonials">
+
+    <!--**heading****************-->
+    <div class="testimonials-heading">
+        <h3>Our Patients FeedBack About Us</h3>
+        <p>The driver showed concern by waiting after the drop, to make sure the patient's home oxygen concentrator was working properly. The entire crew was very helpful. I would strongly recommend Medulla to all corporates.</p>
+    </div>
+
+
+    <!--**testimonials-Content****-->
+    <div class="testimonials-content">
+
+        <!--**img************-->
+        <div class="testimonials-img">
+            <img alt="" src="{% static "img/patient.jpeg" %}">
+        </div>
+
+        <!--**box-container**-->
+        <div class="testimonials-box-container">
+
+        <!-- Swiper -->
+        <div class="swiper mySwipertesti">
+        <div class="swiper-wrapper">
+            <!--**1***********-->
+            <div class="swiper-slide">
+            <!--**box**-->
+            <div class="testimonials-box">
+                <!--profile-->
+                <div class="t-profile">
+                    <!--img-->
+                    <div class="t-profile-img">
+                        <img alt="" src="{% static "img/image2.jpeg" %}">
+                    </div>
+                    <!--text-->
+                    <div class="t-profile-text">
+                        <strong>shri Radha</strong>
+                        <span>FROM Delhi</span>
+                        <div class="t-rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <!--feedback-->
+                <p>The driver showed concern by waiting after the drop, to make sure the patient's home oxygen concentrator was working properly. The entire crew was very helpful. I would strongly recommend Medulla to all corporates.</p>
+            </div><!--box-end-->
+        </div><!--slide-end-->
+
+        <!--**2***********-->
+        <div class="swiper-slide">
+            <!--**box**-->
+            <div class="testimonials-box">
+                <!--profile-->
+                <div class="t-profile">
+                    <!--img-->
+                    <div class="t-profile-img">
+                        <img alt="" src="{% static "img/image2.jpeg" %}">
+                    </div>
+                    <!--text-->
+                    <div class="t-profile-text">
+                        <strong>shri radha</strong>
+                        <span>From delhi</span>
+                        <div class="t-rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <!--feedback-->
+                <p>The driver showed concern by waiting after the drop, to make sure the patient's home oxygen concentrator was working properly. The entire crew was very helpful. I would strongly recommend Medulla to all corporates.</p>
+            </div><!--box-end-->
+        </div><!--slide-end-->
+
+        <!--**3***********-->
+        <div class="swiper-slide">
+            <!--**box**-->
+            <div class="testimonials-box">
+                <!--profile-->
+                <div class="t-profile">
+                    <!--img-->
+                    <div class="t-profile-img">
+                        <img alt="" src="{% static "img/image2.jpeg" %}">
+                    </div>
+                    <!--text-->
+                    <div class="t-profile-text">
+                        <strong>Client Name</strong>
+                        <span>From China</span>
+                        <div class="t-rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <!--feedback-->
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa est odit dicta sequi labore perferendis ut veritatis expedita, nihil sint! Delectus aut id voluptatibus nemo dolorum, quos consequatur commodi repudiandae?</p>
+            </div><!--box-end-->
+        </div><!--slide-end-->
+        
+        </div><!--wrapper-end-->
+        <div class="swiper-pagination"></div>
+        </div><!--swiper-end-->
+
+        </div><!--container-end-->
+    
+    </div><!--content-end-->
+
+</section><!--testimonials-end-->
+
+
+
+<!--==Subscribe===========================-->
+<section id="subscribe">
+    <h3>Subscribe For New Updates From Medulla</h3>
+    <!--subcribe-box-->
+    <form class="subscribe-box">
+        <input type="email" placeholder="Example@gmail.com">
+        <button>Subscribe</button>
+    </form>
+</section><!--end-->
+
+
+<footer>
+    <div class="footer-container">
+        <!--**comoany-box**-->
+        <div class="footer-company-box">
+            <!--logo-->
+            <a href="#" class="logo"><span>Medulla</span></a>
+            <!--details-->
+            <p>Choose the ambulance that best fits your needs and book with help of one call or websites. With a hassle-free booking process</p>
+            <!--social-box-->
+            <div class="footer-social">
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+        </div>
+        <!--**link-box***-->
+        <div class="footer-link-box">
+            <strong>Main Link's</strong>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Portfolio</a></li>
+            </ul>
+        </div>
+        <!--**link-box***-->
+        <div class="footer-link-box">
+            <strong>External Link's</strong>
+            <ul>
+                <li><a href="#">Our Product's</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Disclaimer</a></li>
+                <li><a href="#">Trem's and Condition's</a></li>
+            </ul>
+        </div>
+        <!--**link-box***-->
+        <div class="footer-link-box">
+            <strong>External Link's</strong>
+            <ul>
+                <li><a href="#">Our Product's</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Disclaimer</a></li>
+                <li><a href="#">Trem's and Condition's</a></li>
+            </ul>
+        </div>
+        
+
+    </div>
+
+    <!--**bottom**********************-->
+    <div class="footer-bottom">
+        <span class="footer-owner">Made By  Yash Pandey</span>
+        <span class="copyright">&#169; Copyright 2023 -  Going-To Yash pandey </span>
+    </div>
+</footer>
+{% endblock body %}
+{% block js %}
+<script src="{% static "js/home.js" %}"></script>
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script src="{% static "js/swiper.js" %}"></script>
+{% endblock js %}

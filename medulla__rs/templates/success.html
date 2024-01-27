@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static "css/success.css" %}">
+{% endblock css %}
+{% block body %}
+<div class="success-container">
+    <div class="success-icon">&#10003;</div>
+    <h1>Booking Successful!</h1>
+    <p>Thank you for choosing our service. Your booking has been confirmed.</p>
+    <p>An email with the details has been sent to your provided email address.</p>
+    <a href="{% url "home" %}" class="cta-btn">Return to Home</a>
+</div>
+{% endblock body %}

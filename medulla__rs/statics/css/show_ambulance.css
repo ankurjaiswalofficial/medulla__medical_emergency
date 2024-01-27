@@ -1,0 +1,123 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #f8f8f8; /* Background color for the body */
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #2c3e50; /* Background color for the header */
+    color: #ecf0f1; /* Text color for the header */
+    margin-bottom: 10px;
+}
+
+.logo {
+    width: 100px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+}
+
+/* Style for the home button */
+.home-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 5px;
+}
+
+.home-button {
+    text-decoration: none;
+    color: #3498db; /* Text color for the home button */
+    display: flex;
+    align-items: center;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    width: 40%;
+    box-sizing: border-box;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #ecf0f1; /* Background color for the cards */
+    margin: 0 10px 10px 0;
+    height: 500px;
+    overflow-x: auto; /* Added overflow-x property */
+    border-radius: 10px; /* Rounded corners for the cards */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for the cards */
+}
+
+.card:nth-child(odd) {
+    background-color: #bdc3c7; /* Background color for odd-numbered cards */
+}
+
+h1 {
+    font-size: 50px;
+}
+
+/* Style for input boxes */
+.input-box {
+    margin-bottom: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+/* Style for the button */
+.check-button {
+    background-color: #3498db; /* Background color for the button */
+    color: #fff; /* Text color for the button */
+    padding: 10px 15px;
+    margin-left: 350px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.check-button:hover {
+    background-color: #2980b9; /* Hover background color for the button */
+}
+
+/* Style for the table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th,
+td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #3498db; /* Background color for header cells in the table */
+    color: #fff; /* Text color for header cells in the table */
+}
+
+@media (max-width: 700px) {
+    .card {
+        width: 80%; /* Adjusted width for smaller screens */
+    }
+}

@@ -1,0 +1,125 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+
+  .navbar {
+    background-color: #122853;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .logo img {
+    width: 100px; /* Adjust the size of the logo as needed */
+    height: auto;
+    margin-right: 10px;
+  }
+
+  .site-name {
+    margin-right: auto;
+  }
+
+  .blocks-wrapper {
+    margin-top: 80px; /* Adjust the margin to account for the fixed navbar height */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 900px; /* Set a maximum width to limit the number of cards per row */
+    margin-left: 3%;
+  }
+
+  .block {
+    width: calc(33.33% - 30px); /* 3 cards in one row with margins */
+    height: 280px;
+    background-color: #c7d0eb;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+    border: 5px solid #ffffff;
+    box-sizing: border-box;
+  }
+
+  .fixed-card {
+    width: 35%;
+    margin-top: 100px;
+    height: 100%;
+    background-color: #F2F1EB;
+    display: flex;
+    flex-direction: column;
+    padding:15px;
+    overflow:scroll;
+    /* align-items: center; */
+    /* justify-content: center; */
+    position: absolute;
+    top: 115px;
+    right: 30px;
+    z-index: 1;
+    border-radius: 30px;
+  }
+
+  .fixed-card p {
+    color: white;
+    font-size: 1.4rem;
+    margin-top: 20px;
+  }
+
+  .fixed-card button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffffff; /* White */
+    color: red;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  .block p, .fixed-card p {
+    color: #122853;
+    font-size: 1.4rem;
+    margin-top: 20px;
+  }
+
+  .block button, .fixed-card button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50; /* Green */
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  @media screen and (max-width: 600px) {
+    .block {
+      width: 100%;
+      max-width: 300px;
+    }
+    .fixed-card {
+      width: 100%;
+    }
+  }
+  h1{
+      font-size: 50px;
+  }
+  .i{
+    width:100px;
+  }
+  .home-button {
+          text-decoration: none;
+          color: #3498db; /* Text color for the home button */
+          display: flex;
+          align-items: center;
+      }

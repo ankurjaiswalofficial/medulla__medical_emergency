@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static "css/show_ambulance.css" %}">
+{% endblock css %}
+{% block body %}
+<header>
+    <div class="title">
+        <img src="{% static "img/logo.png" %}" alt="Logo" class="logo">
+        <h1>Medulla</h1>
+    </div>
+    
+    <!-- Home button with SVG vector icon -->
+    <a href="#" class="home-button">
+        <svg class="home-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M12 2L2 12h3v8h6v-6h6v6h6v-8h3z"/>
+        </svg>
+        Home
+    </a>
+</header>
+
+<div class="card-container" >
+    <div class="card">
+        <h2>Search for Ambulance nearby</h2><br>
+        <label for="input0">PICKUP LOCATION</label>
+        <input type="text" id="patientname" class="input-box" value="<?php echo $pickup; ?>" readonly ><br><br>
+        <label for="input1">DROP LOCATION</label>
+        <input type="text" id="pickup" class="input-box" value="<?php echo $drop; ?>" readonly ><br><br>
+        <label for="input2">DISTANCE</label>
+        <input type="text" id="input2" class="input-box" readonly value="" placeholder="Distance">
+
+        <!-- Button for checking nearby ambulance -->
+        <button class="check-button" id="loadContentBtn" onclick="getLocation()" >Check Nearby Ambulance</button>
+    </div>
+    
+    <div class="card" id="contentDiv">
+        <h1>Available Ambulances</h1>
+        <!-- table is here -->
+    </div>
+</div>
+{% endblock body %}
+{% block js %}
+<script src="{% static "js/show_ambulance.js" %}"></script>
+{% endblock js %}

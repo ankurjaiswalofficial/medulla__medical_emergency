@@ -118,8 +118,7 @@ USE_TZ = True
 
 STATIC_URL = 'statics/'
 STATIC_ROOT = BASE_DIR / 'statics'
-STATICFILES_DIR = [
-    BASE_DIR / "statics",
+STATICFILES_DIRS = [
     BASE_DIR / "medulla__rs/statics"
 ]
 # Media File Handling
